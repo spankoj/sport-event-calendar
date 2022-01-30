@@ -16,7 +16,7 @@ export async function getEvents() {
 }
 
 //Get single sport
-export async function getSingleSport(id) {
+export async function getSport(id) {
   const sport = await sql`
   SELECT * FROM sport WHERE id=${id};
   `;
