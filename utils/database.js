@@ -15,6 +15,13 @@ export async function getEvents() {
   return events.map((s) => camelcaseKeys(s));
 }
 
+//Get sports
+export async function getSports() {
+  const sports = await sql`SELECT * FROM sports;`;
+
+  return sports.map((s) => camelcaseKeys(s));
+}
+
 //Get single sport
 export async function getSportById(id) {
   const sports = await sql`
