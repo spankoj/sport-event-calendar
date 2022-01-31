@@ -1,13 +1,14 @@
-import { getEvents, getSport } from '../../../utils/database';
+import { getEvents } from '../../../utils/database';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
     const events = getEvents();
     return res.status(200).json(events);
-  } else if (req.method === 'GET') {
-    const sport = getSport();
-    return res.status(200).json(sport);
   }
+  // else if (req.method === 'GET') {
+  //   const sport = getSportById();
+  //   return res.status(200).json(sport);
+  // }
   // else if (req.method === 'POST') {
   //   const image = await insertImage(req.body.data);
   //   return res.status(200).json({ image: image });

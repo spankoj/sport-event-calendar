@@ -16,9 +16,9 @@ export async function getEvents() {
 }
 
 //Get single sport
-export async function getSport(id) {
-  const sport = await sql`
-  SELECT * FROM sport WHERE id=${id};
+export async function getSportById(id) {
+  const sports = await sql`
+  SELECT * FROM sports WHERE id=${id};
   `;
-  return sport.map((s) => camelcaseKeys(s))[0];
+  return sports.map((s) => camelcaseKeys(s))[0];
 }
