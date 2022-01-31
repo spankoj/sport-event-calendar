@@ -22,10 +22,45 @@ export async function getSports() {
   return sports.map((s) => camelcaseKeys(s));
 }
 
+//Get teams
+export async function getTeams() {
+  const teams = await sql`SELECT * FROM teams;`;
+
+  return teams.map((s) => camelcaseKeys(s));
+}
+
 //Get single sport
-export async function getSportById(id) {
-  const sports = await sql`
-  SELECT * FROM sports WHERE id=${id};
+// export async function getSportById(id) {
+//   const sports = await sql`
+//   SELECT * FROM sports WHERE id=${id};
+//   `;
+//   return sports.map((s) => camelcaseKeys(s))[0];
+// }
+
+// Insert event
+export async function insertEvent({
+  dateTime,
+  sportId,
+  homeTeamId,
+  awayTeamId,
+  details,
+}) {
+  // console.log();
+  const events = await sql`
+    INSERT INTO events
+      (datetime,
+      sport_id,
+      home_team_id,
+      away_team_id,
+      details)
+    VALUES
+      (${dateTime}, ${sportId}, ${homeTeamId}, ${awayTeamId},${details})
+    RETURNING
+      datetime,
+      sport_id,
+      home_team_id,
+      away_team_id,
+      details
   `;
-  return sports.map((s) => camelcaseKeys(s))[0];
+  return events.map((events) => camelcaseKeys(events))[0];
 }
