@@ -25,7 +25,7 @@ export default function EventForm({ sports, teams }) {
           }),
         });
 
-        // window.location.reload();
+        window.location.reload();
       }}
     >
       <div>
