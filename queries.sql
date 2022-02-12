@@ -44,3 +44,22 @@ exports.down = async function down(sql) {
 DROP TABLE events;
 `;
 };
+
+SELECT
+datetime,
+sports.sportname AS sport_id,
+t1.teamname AS home_team_id,
+t2.teamname AS away_team_id, details
+FROM
+events
+LEFT JOIN
+sports
+ON
+events.sport_id = sports.id
+LEFT JOIN
+teams t1
+ON
+events.home_team_id = t1.id
+LEFT JOIN
+teams t2
+ON events.away_team_id = t2.id;

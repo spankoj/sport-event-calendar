@@ -8,9 +8,29 @@ dotenvSafe.config();
 //Connect to the database
 const sql = postgres();
 
-//Perform first query
+//Get the events
 export async function getEvents() {
-  const events = await sql`SELECT * FROM events;`;
+  const events = await sql`
+    SELECT
+    datetime,
+    sports.sportname AS sport_id,
+    t1.teamname AS home_team_id,
+    t2.teamname AS away_team_id,
+    details
+    FROM
+    events
+    LEFT JOIN
+    sports
+    ON
+    events.sport_id = sports.id
+    LEFT JOIN
+    teams t1
+    ON
+    events.home_team_id = t1.id
+    LEFT JOIN
+    teams t2
+    ON
+    events.away_team_id = t2.id;`;
 
   return events.map((s) => camelcaseKeys(s));
 }
@@ -29,14 +49,6 @@ export async function getTeams() {
   return teams.map((s) => camelcaseKeys(s));
 }
 
-//Get single sport
-// export async function getSportById(id) {
-//   const sports = await sql`
-//   SELECT * FROM sports WHERE id=${id};
-//   `;
-//   return sports.map((s) => camelcaseKeys(s))[0];
-// }
-
 // Insert event
 export async function insertEvent({
   dateTime,
@@ -45,7 +57,6 @@ export async function insertEvent({
   awayTeamId,
   details,
 }) {
-  // console.log();
   const events = await sql`
     INSERT INTO events
       (datetime,
