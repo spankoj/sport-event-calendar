@@ -12,6 +12,7 @@ const sql = postgres();
 export async function getEvents() {
   const events = await sql`
     SELECT
+    events.id AS events_id,
     datetime,
     sports.sportname AS sport_id,
     t1.teamname AS home_team_id,
@@ -74,4 +75,16 @@ export async function insertEvent({
       details
   `;
   return events.map((events) => camelcaseKeys(events))[0];
+}
+// Delete single event
+export async function deleteEventById(id) {
+  const events = await sql`
+  DELETE
+  FROM
+  events
+  WHERE
+  id=${id}
+  `;
+
+  return events.map((event) => camelcaseKeys(event))[0];
 }
