@@ -1,25 +1,25 @@
 # Sport Event Calendar
 
-This Next.js project was created for Sportradar as a coding academy exercise.
+This Next.js project was created for Sportradar as a coding exercise.
 
 ## List of features
 
-- landing page with the list os sport events
+- landing page with the list of sport events
 - user can add new sport event
 - user can delete existing sport event
 
-## Database schema (ERD)
+## HTML frontend
 
-![Screenshot](./public/Screenshot_DB.png)
+![Screenshot](./public/Screenshot_Sport.png)
 
 ## Database set up
 
 ### Postgres
 
-- download and install PostgreSQL
-- connect to the default database as administrator
+- Download and install PostgreSQL
+- Connect to the default database as administrator:
   `$ psql -U postgres`
-- create database:
+- Create database:
 
   `CREATE DATABASE sportradar;`
 
@@ -27,38 +27,32 @@ This Next.js project was created for Sportradar as a coding academy exercise.
 
   `GRANT ALL PRIVILEGES ON DATABASE sportradar TO sportradar2022;`
 
-- run the following command:
+- Run the following command:
 
   `$ psql -U sportradar2022 sportradar;`
 
-- password for user sportradar2022: sportradar2022
+- Password for user sportradar2022:
 
-### Migrations
+sportradar2022
 
-<!-- - install:
+## Database schema (ERD)
 
-  `$ yarn add ley`
+![Screenshot](./public/Screenshot_DB.png)
 
-- follow setup instructions
+## Migrations
 
-  https://github.com/lukeed/ley#cli -->
+- use your package manager to install dependencies:
 
-- invoke ley up to apply migrations
+`yarn`
 
-  `$ yarn migrate up`
+- invoke ley up to apply migrations:
 
-## HTML frontend
-
-![Screenshot](./public/Screenshot_Sport.png)
+`$ yarn migrate up`
 
 ## Run the app
 
-Use your package manager to install dependencies
+To run next.js app in the development mode use:
 
-> `yarn`
-
-To run next.js app in the development mode use
-
-> `yarn dev`
+`yarn dev`
 
 Open [http://localhost:3000](http://localhost:3000) to view next.js app in the browser.
