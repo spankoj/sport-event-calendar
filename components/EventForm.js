@@ -6,7 +6,7 @@ export default function EventForm({ sports, teams }) {
   const [homeTeam, setHomeTeam] = useState('');
   const [awayTeam, setAwayTeam] = useState('');
   const [details, setDetails] = useState('');
-  console.log(datetime);
+
   return (
     <form
       onSubmit={async (e) => {
@@ -31,7 +31,6 @@ export default function EventForm({ sports, teams }) {
       <div>
         <h3>New Event</h3>
 
-        {/* Calendar */}
         <label htmlFor="calendar">Calendar</label>
         <input
           title="datetime"
@@ -43,10 +42,10 @@ export default function EventForm({ sports, teams }) {
           onChange={(e) => setDateTime(e.currentTarget.value)}
           required
         />
-        <br />
-        {/* Sport */}
-        <label htmlFor="sport-select">Sport</label>
 
+        <br />
+
+        <label htmlFor="sport-select">Sport</label>
         <select
           name="sport"
           id="sport-select"
@@ -60,10 +59,10 @@ export default function EventForm({ sports, teams }) {
             </option>
           ))}
         </select>
-        <br />
-        {/* HomeTeam */}
-        <label htmlFor="hometeam-select">Home Team</label>
 
+        <br />
+
+        <label htmlFor="hometeam-select">Home Team</label>
         <select
           name="hometeam"
           id="hometeam-select"
@@ -77,10 +76,10 @@ export default function EventForm({ sports, teams }) {
             </option>
           ))}
         </select>
-        <br />
-        {/* Away Team */}
-        <label htmlFor="awayteam-select">Away Team</label>
 
+        <br />
+
+        <label htmlFor="awayteam-select">Away Team</label>
         <select
           name="awayteam"
           id="awayteam-select"
@@ -94,8 +93,9 @@ export default function EventForm({ sports, teams }) {
             </option>
           ))}
         </select>
+
         <br />
-        {/* Details */}
+
         <label htmlFor="details">Details</label>
         <input
           title="details"

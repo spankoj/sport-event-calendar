@@ -1,36 +1,66 @@
-## Sport Event Calendar
+# Sport Event Calendar
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This Next.js project was created for Sportradar as a coding academy exercise.
 
-## Getting Started
+## List of features
 
-First, run the development server:
+- landing page with the list os sport events
+- user can add new sport event
+- user can delete existing sport event
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Database schema (ERD)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Screenshot](./public/Screenshot_DB.png)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Database set up
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Postgres
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- download and install PostgreSQL
+- start the database from the terminal:
+  `$ postgres`
+- open a new tab in the terminal and run the following command:
+  `$ psql -U sportradar2022 sportradar;`
+- Password for user sportradar2022: sportradar2022
 
-## Learn More
+### .env
 
-To learn more about Next.js, take a look at the following resources:
+- crate .env.example file in code editor's root containing:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+PGHOST=xxxx
+PGDATABASE=xxxx
+PGUSERNAME=xxxx
+PGPASSWORD=xxxx
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- create .env file n code editor's root containing:
 
-## Deploy on Vercel
+PGHOST=localhost
+PGDATABASE=sportradar
+PGUSERNAME=sportradar2022
+PGPASSWORD=sportradar2022
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Migrations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- install:
+
+  `$ yarn add ley`
+
+- follow setup instructions
+
+  https://github.com/lukeed/ley#cli
+
+- invoke ley up to apply new migrations
+
+  `$ yarn migrate up`
+
+## HTML frontend
+
+![Screenshot](./public/Screenshot_Sport.png)
+
+## Run the app
+
+To run next.js app in the development mode use
+
+> `yarn dev`
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

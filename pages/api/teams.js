@@ -8,8 +8,3 @@ export default async function handler(req, res) {
 
   res.status(400).json(null);
 }
-
-// const events = getEvents();
-// export default (req, res) => {
-//   res.status(200).json(events);
-// };

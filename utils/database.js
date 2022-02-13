@@ -76,6 +76,7 @@ export async function insertEvent({
   `;
   return events.map((events) => camelcaseKeys(events))[0];
 }
+
 // Delete single event
 export async function deleteEventById(id) {
   const events = await sql`
