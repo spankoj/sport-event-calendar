@@ -17,39 +17,33 @@ This Next.js project was created for Sportradar as a coding academy exercise.
 ### Postgres
 
 - download and install PostgreSQL
-- start the database from the terminal:
-  `$ postgres`
-- open a new tab in the terminal and run the following command:
+- connect to the default database as administrator
+  `$ psql -U postgres`
+- create database:
+
+  `CREATE DATABASE sportradar;`
+
+  `CREATE USER sportradar2022 WITH ENCRYPTED PASSWORD 'sportradar2022';`
+
+  `GRANT ALL PRIVILEGES ON DATABASE sportradar TO sportradar2022;`
+
+- run the following command:
+
   `$ psql -U sportradar2022 sportradar;`
-- Password for user sportradar2022: sportradar2022
 
-### .env
-
-- crate .env.example file in code editor's root containing:
-
-PGHOST=xxxx
-PGDATABASE=xxxx
-PGUSERNAME=xxxx
-PGPASSWORD=xxxx
-
-- create .env file n code editor's root containing:
-
-PGHOST=localhost
-PGDATABASE=sportradar
-PGUSERNAME=sportradar2022
-PGPASSWORD=sportradar2022
+- password for user sportradar2022: sportradar2022
 
 ### Migrations
 
-- install:
+<!-- - install:
 
   `$ yarn add ley`
 
 - follow setup instructions
 
-  https://github.com/lukeed/ley#cli
+  https://github.com/lukeed/ley#cli -->
 
-- invoke ley up to apply new migrations
+- invoke ley up to apply migrations
 
   `$ yarn migrate up`
 
@@ -59,8 +53,12 @@ PGPASSWORD=sportradar2022
 
 ## Run the app
 
+Use your package manager to install dependencies
+
+> `yarn`
+
 To run next.js app in the development mode use
 
 > `yarn dev`
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view next.js app in the browser.
