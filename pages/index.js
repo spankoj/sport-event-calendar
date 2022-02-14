@@ -12,13 +12,13 @@ export default function Home({ sports, teams, events }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/sports`);
-  const res2 = await fetch(`http://localhost:3000/api/teams`);
-  const res3 = await fetch(`http://localhost:3000/api/events`);
+  const fetchedSports = await fetch(`http://localhost:3000/api/sports`);
+  const fetchedTeams = await fetch(`http://localhost:3000/api/teams`);
+  const fetchedEvents = await fetch(`http://localhost:3000/api/events`);
 
-  const sports = await res.json();
-  const teams = await res2.json();
-  const events = await res3.json();
+  const sports = await fetchedSports.json();
+  const teams = await fetchedTeams.json();
+  const events = await fetchedEvents.json();
 
   return {
     props: { sports, teams, events },
